@@ -8,7 +8,8 @@
 
 import Cocoa
 
-struct Crosshair {
+struct Crosshair: CanvasDrawable {
+    
     static let color = NSColor.black
 
     enum Dimensions {
