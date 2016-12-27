@@ -10,22 +10,10 @@ import Cocoa
 
 class Stroke: CanvasDrawable {
 
-    var points: [NSPoint] = []
+    var points: [NSPoint]
+    var corners: Corners
     var bounds: NSRect {
-        // TODO: denormalize and change upon adding points for performance
-        let xs = points.sorted { $0.x < $1.x }
-        let ys = points.sorted { $0.y < $1.y }
-
-        guard let left = xs.first?.x,
-            let right = xs.last?.x,
-            let bottom = ys.first?.y,
-            let top = ys.last?.y
-            else { return NSRect() }
-
-        let width = right - left
-        let height = top - bottom
-
-        return NSRect(x: left, y: bottom, width: width, height: height)
+        return corners.bounds
     }
 
     var color: NSColor = NSColor.blue
@@ -33,14 +21,27 @@ class Stroke: CanvasDrawable {
     func add(point: NSPoint) {
 
         points.append(point)
+        corners.adjust(to: point)
     }
 
     init(startAt point: NSPoint) {
 
         self.points = [point]
+        self.corners = Corners(originatingAt: point)
     }
 
     func draw() {
+
+        // drawBoundingBox()
+        drawPath()
+    }
+
+    fileprivate func drawBoundingBox() {
+
+        corners.draw()
+    }
+
+    fileprivate func drawPath() {
 
         guard let firstPoint = points.first else { return }
 
@@ -52,6 +53,7 @@ class Stroke: CanvasDrawable {
         }
 
         color.set()
+        path.lineWidth = 3  
         path.stroke()
     }
 }

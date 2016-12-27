@@ -28,7 +28,7 @@ class CanvasView: NSView {
 
             if let newValue = crosshair {
                 self.setNeedsDisplay(newValue.bounds)
-            }
+            }   
         }
     }
 
@@ -102,5 +102,6 @@ class CanvasView: NSView {
         guard let currentStroke = currentStroke else { return }
 
         currentStroke.add(point: location)
+        self.setNeedsDisplay(currentStroke.bounds)
     }
 }
