@@ -69,6 +69,17 @@ class CanvasView: NSView {
 
     // MARK: -
 
+    override func mouseEntered(with event: NSEvent) {
+
+        NSCursor.hide()
+        super.mouseEntered(with: event)
+    }
+
+    override func mouseExited(with event: NSEvent) {
+
+        NSCursor.unhide()
+        super.mouseExited(with: event)
+    }
     override func mouseMoved(with event: NSEvent) {
 
         let location = convert(event.locationInWindow, from: nil)

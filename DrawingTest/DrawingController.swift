@@ -17,7 +17,7 @@ class DrawingController: NSViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let trackingArea = NSTrackingArea(rect: canvasView.frame, options: [.activeInActiveApp, .mouseMoved, .inVisibleRect], owner: canvasView, userInfo: nil)
+        let trackingArea = NSTrackingArea(rect: canvasView.frame, options: [.activeInActiveApp, .mouseMoved, .mouseEnteredAndExited, .inVisibleRect], owner: canvasView, userInfo: nil)
         canvasView.addTrackingArea(trackingArea)
     }
 
