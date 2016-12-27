@@ -27,6 +27,12 @@ class DrawingController: NSViewController {
         super.mouseDown(with: event)
     }
 
+    override func mouseUp(with event: NSEvent) {
+
+        showPressure(event)
+        super.mouseDown(with: event)
+    }
+
     override func mouseDragged(with event: NSEvent) {
 
         showPressure(event)

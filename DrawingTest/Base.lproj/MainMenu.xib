@@ -690,29 +690,30 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="iXT-sK-H5a" userLabel="Canvas" customClass="CanvasView" customModule="DrawingTest" customModuleProvider="target">
-                        <rect key="frame" x="20" y="20" width="440" height="320"/>
+                        <rect key="frame" x="0.0" y="20" width="480" height="340"/>
                     </customView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLK-nO-xoN">
-                        <rect key="frame" x="-2" y="343" width="37" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7Vv-jY-siJ">
-                            <font key="font" metaFont="system"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4L-6x-83R">
+                        <rect key="frame" x="-2" y="0.0" width="37" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="mN3-sw-uSU">
+                            <font key="font" metaFont="system" size="11"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="w4L-6x-83R" secondAttribute="bottom" id="7b7-CR-La5"/>
                     <constraint firstAttribute="bottom" secondItem="iXT-sK-H5a" secondAttribute="bottom" constant="20" id="CAz-ON-oIW"/>
-                    <constraint firstItem="iXT-sK-H5a" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="lE9-aZ-JdX"/>
-                    <constraint firstAttribute="trailing" secondItem="iXT-sK-H5a" secondAttribute="trailing" constant="20" id="ogf-mz-ELW"/>
-                    <constraint firstItem="iXT-sK-H5a" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="ylg-I5-1U6"/>
+                    <constraint firstItem="w4L-6x-83R" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="Qcz-q4-wf1"/>
+                    <constraint firstItem="iXT-sK-H5a" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="lE9-aZ-JdX"/>
+                    <constraint firstAttribute="trailing" secondItem="iXT-sK-H5a" secondAttribute="trailing" id="ogf-mz-ELW"/>
+                    <constraint firstItem="iXT-sK-H5a" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="ylg-I5-1U6"/>
                 </constraints>
             </view>
         </window>
         <customObject id="QTm-Mf-ugX" customClass="DrawingController" customModule="DrawingTest" customModuleProvider="target">
             <connections>
-                <outlet property="pressureLabel" destination="FLK-nO-xoN" id="C6J-sF-XzB"/>
+                <outlet property="pressureLabel" destination="w4L-6x-83R" id="AIh-dl-RHh"/>
                 <outlet property="view" destination="iXT-sK-H5a" id="feq-il-J1R"/>
             </connections>
         </customObject>

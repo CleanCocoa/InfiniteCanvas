@@ -39,8 +39,8 @@ class CanvasView: NSView {
 
         super.draw(dirtyRect)
 
-        self.drawCrosshair()
         self.drawPaths()
+        self.drawCrosshair()
     }
 
     func drawCrosshair() {
@@ -81,6 +81,8 @@ class CanvasView: NSView {
 
         let location = convert(event.locationInWindow, from: nil)
         currentStroke = Stroke(startAt: location)
+
+        super.mouseDown(with: event)
     }
 
     override func mouseUp(with event: NSEvent) {
@@ -92,6 +94,8 @@ class CanvasView: NSView {
         paths.append(currentStroke)
 
         self.currentStroke = nil
+
+        super.mouseUp(with: event)
     }
 
     override func mouseDragged(with event: NSEvent) {
@@ -103,5 +107,7 @@ class CanvasView: NSView {
 
         currentStroke.add(point: location)
         self.setNeedsDisplay(currentStroke.bounds)
+
+        super.mouseDragged(with: event)
     }
 }

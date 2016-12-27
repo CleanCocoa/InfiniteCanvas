@@ -13,7 +13,7 @@ class Stroke: CanvasDrawable {
     var points: [NSPoint]
     var corners: Corners
     var bounds: NSRect {
-        return corners.bounds
+        return corners.bounds(enlargedBy: 3)
     }
 
     var color: NSColor = NSColor.blue
@@ -32,8 +32,10 @@ class Stroke: CanvasDrawable {
 
     func draw() {
 
-        // drawBoundingBox()
-        drawPath()
+//        drawBoundingBox()
+
+        let path = interpolatedPath(points: points)
+        drawPath(path: path)
     }
 
     fileprivate func drawBoundingBox() {
@@ -41,19 +43,17 @@ class Stroke: CanvasDrawable {
         corners.draw()
     }
 
-    fileprivate func drawPath() {
-
-        guard let firstPoint = points.first else { return }
-
-        let path = NSBezierPath()
-        path.move(to: firstPoint)
-
-        for point in points.dropFirst() {
-            path.line(to: point)
-        }
+    fileprivate func drawPath(path: NSBezierPath) {
 
         color.set()
-        path.lineWidth = 3  
+        path.lineWidth = 3
         path.stroke()
     }
+}
+
+fileprivate func interpolatedPath(points: [NSPoint]) -> NSBezierPath {
+
+    let path = NSBezierPath()
+    path.interpolatePointsWithHermite(points: points)
+    return path
 }

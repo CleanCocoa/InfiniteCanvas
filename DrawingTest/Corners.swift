@@ -17,15 +17,6 @@ struct Corners {
     fileprivate(set) var minY: CGFloat
     fileprivate(set) var maxY: CGFloat
 
-    var origin: NSPoint { return NSPoint(x: minX, y: minY) }
-    var size: NSSize { return NSSize(width: maxX - minX, height: maxY - minY) }
-    var bounds: NSRect { return NSRect(origin: origin, size: size) }
-
-    var topLeft: NSPoint { return NSPoint(x: minX, y: maxY) }
-    var topRight: NSPoint { return NSPoint(x: maxX, y: maxY) }
-    var bottomRight: NSPoint { return NSPoint(x: maxX, y: minY) }
-    var bottomLeft: NSPoint { return NSPoint(x: minX, y: minY) }
-
     init(_ a: NSPoint, _ b: NSPoint, _ c: NSPoint, _ d: NSPoint) {
 
         let points = [a, b, c, d]
@@ -53,6 +44,24 @@ struct Corners {
         self.minY = point.y
         self.maxY = point.y
     }
+
+    var origin: NSPoint { return NSPoint(x: minX, y: minY) }
+    var size: NSSize { return NSSize(width: maxX - minX, height: maxY - minY) }
+    var bounds: NSRect { return NSRect(origin: origin, size: size) }
+
+    func bounds(enlargedBy padding: CGFloat) -> NSRect {
+
+        let origin = NSPoint(x: minX - padding, y: minY - padding)
+        let size = NSSize(
+            width: maxX - minX + 2 * padding,
+            height: maxY - minY + 2 * padding)
+        return NSRect(origin: origin, size: size)
+    }
+
+    var topLeft: NSPoint { return NSPoint(x: minX, y: maxY) }
+    var topRight: NSPoint { return NSPoint(x: maxX, y: maxY) }
+    var bottomRight: NSPoint { return NSPoint(x: maxX, y: minY) }
+    var bottomLeft: NSPoint { return NSPoint(x: minX, y: minY) }
 
     mutating func adjust(to point: NSPoint) {
 
