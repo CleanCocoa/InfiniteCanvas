@@ -17,17 +17,29 @@ class Stroke: CanvasDrawable {
     }
 
     var color: NSColor = NSColor.blue
-
-    func add(point: NSPoint) {
-
-        points.append(point)
-        corners.adjust(to: point)
-    }
+    var width: CGFloat = 3
+    var precision: CGFloat = 3
 
     init(startAt point: NSPoint) {
 
         self.points = [point]
         self.corners = Corners(originatingAt: point)
+    }
+
+    func add(point: NSPoint) {
+
+        guard keepsPrecisionDistanceToLastPoint(point) else { return }
+
+        points.append(point)
+        corners.adjust(to: point)
+    }
+
+    fileprivate func keepsPrecisionDistanceToLastPoint(_ point: NSPoint) -> Bool {
+
+        guard let lastPoint = points.last else { return true }
+
+        let delta = lastPoint.distance(to: point)
+        return delta.above(4)
     }
 
     func draw() {
@@ -46,7 +58,7 @@ class Stroke: CanvasDrawable {
     fileprivate func drawPath(path: NSBezierPath) {
 
         color.set()
-        path.lineWidth = 3
+        path.lineWidth = width
         path.stroke()
     }
 }

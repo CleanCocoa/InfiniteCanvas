@@ -17,6 +17,7 @@
 		50EC08501E12AEC200A27627 /* CornersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC084F1E12AEC200A27627 /* CornersTests.swift */; };
 		50EC08521E12B3B700A27627 /* Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC08511E12B3B700A27627 /* Corners.swift */; };
 		50EC08551E12C37B00A27627 /* NSBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC08541E12C37B00A27627 /* NSBezierPath+Interpolation.swift */; };
+		50EC08571E12CB6A00A27627 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC08561E12CB6A00A27627 /* Distance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		50EC084F1E12AEC200A27627 /* CornersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornersTests.swift; sourceTree = "<group>"; };
 		50EC08511E12B3B700A27627 /* Corners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corners.swift; sourceTree = "<group>"; };
 		50EC08541E12C37B00A27627 /* NSBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
+		50EC08561E12CB6A00A27627 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +110,11 @@
 		50EC08531E12C2F600A27627 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				50EC084B1E126DB100A27627 /* Crosshair.swift */,
-				50EC084D1E12700900A27627 /* Stroke.swift */,
+				50EC08561E12CB6A00A27627 /* Distance.swift */,
 				50EC08511E12B3B700A27627 /* Corners.swift */,
+				50EC084B1E126DB100A27627 /* Crosshair.swift */,
 				50EC08541E12C37B00A27627 /* NSBezierPath+Interpolation.swift */,
+				50EC084D1E12700900A27627 /* Stroke.swift */,
 			);
 			name = Drawing;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				50EC084A1E125C7C00A27627 /* DrawingController.swift in Sources */,
 				50EC084E1E12700900A27627 /* Stroke.swift in Sources */,
 				50EC08551E12C37B00A27627 /* NSBezierPath+Interpolation.swift in Sources */,
+				50EC08571E12CB6A00A27627 /* Distance.swift in Sources */,
 				50EC08481E125BC900A27627 /* CanvasView.swift in Sources */,
 				50EC08521E12B3B700A27627 /* Corners.swift in Sources */,
 				50EC082D1E125B8700A27627 /* AppDelegate.swift in Sources */,

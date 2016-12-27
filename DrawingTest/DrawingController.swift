@@ -36,11 +36,19 @@ class DrawingController: NSViewController {
     override func mouseDragged(with event: NSEvent) {
 
         showPressure(event)
+        showPointsInStroke()
         super.mouseDragged(with: event)
     }
 
     func showPressure(_ event: NSEvent) {
 
-        pressureLabel.stringValue = String(event.pressure)
+        pressureLabel.stringValue = String(format: "%.4f", event.pressure)
+    }
+
+    func showPointsInStroke() {
+
+        guard let stroke = canvasView.currentStroke else { return }
+
+        pressureLabel.stringValue += " points: " + String(stroke.points.count)
     }
 }
