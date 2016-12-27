@@ -17,28 +17,23 @@ class DrawingController: NSViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let trackingArea = NSTrackingArea(rect: canvasView.frame, options: [.activeInActiveApp, .mouseMoved, .inVisibleRect], owner: self, userInfo: nil)
+        let trackingArea = NSTrackingArea(rect: canvasView.frame, options: [.activeInActiveApp, .mouseMoved, .inVisibleRect], owner: canvasView, userInfo: nil)
         canvasView.addTrackingArea(trackingArea)
-    }
-
-    override func mouseMoved(with event: NSEvent) {
-        drawMouse(event)
-        super.mouseMoved(with: event)
     }
 
     override func mouseDown(with event: NSEvent) {
 
-        drawMouse(event)
+        showPressure(event)
         super.mouseDown(with: event)
     }
 
     override func mouseDragged(with event: NSEvent) {
 
-        drawMouse(event)
+        showPressure(event)
         super.mouseDragged(with: event)
     }
 
-    func drawMouse(_ event: NSEvent) {
+    func showPressure(_ event: NSEvent) {
 
         pressureLabel.stringValue = String(event.pressure)
     }
