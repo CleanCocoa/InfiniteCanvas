@@ -63,7 +63,21 @@ class Stroke: CanvasDrawable {
     }
 }
 
+extension CGPoint{
+
+    func translate(x: CGFloat = 0, y: CGFloat = 0) -> CGPoint {
+        return CGPoint(x: self.x + x, y: self.y + y)
+    }
+}
+
 fileprivate func interpolatedPath(points: [NSPoint]) -> NSBezierPath {
+
+    var points = points
+
+    // Make dot visible
+    if points.count == 1 {
+        points.append(points[0].translate(x: 1, y: 1))
+    }
 
     let path = NSBezierPath()
 //    path.interpolateLinear(points: points)
