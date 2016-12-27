@@ -54,6 +54,7 @@ class Stroke: CanvasDrawable {
 fileprivate func interpolatedPath(points: [NSPoint]) -> NSBezierPath {
 
     let path = NSBezierPath()
+//    path.interpolateLinear(points: points)
     path.interpolatePointsWithHermite(points: points)
     return path
 }

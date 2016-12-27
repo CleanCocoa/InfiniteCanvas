@@ -39,7 +39,7 @@ class CanvasView: NSView {
 
         super.draw(dirtyRect)
 
-        self.drawPaths()
+        self.drawPaths(inside: dirtyRect)
         self.drawCrosshair()
     }
 
@@ -50,9 +50,9 @@ class CanvasView: NSView {
         crosshair.draw()
     }
 
-    func drawPaths() {
+    func drawPaths(inside rect: NSRect) {
 
-        var allPaths = paths
+        var allPaths = paths.filter { !$0.bounds.intersection(rect).isNull }
 
         if let currentStroke = currentStroke {
             allPaths.append(currentStroke)
