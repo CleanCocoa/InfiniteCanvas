@@ -1,3 +1,5 @@
+<img src="assets/title-sketch.png" style="width: 80%; display: block; margin: 0 auto;" />
+
 # InfiniteCanvas
 
 Proof of concept Mac drawing application.
